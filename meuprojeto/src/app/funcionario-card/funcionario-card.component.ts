@@ -15,6 +15,16 @@ export class FuncionarioCardComponent {
 
   @Input() funcionario: any;
 
+  // getClassesCss() {
+  //   return ['badge', 'badge-secondary'];
+  // }
+
+  isAdmin() {
+    console.log(this.funcionario.nome.startsWith('T'));
+    
+    return this.funcionario.nome.startsWith('T');
+  }
+
   getEstilosCartao() {
     return {
       'border-width.px': this.funcionario.id,
