@@ -5,9 +5,13 @@
 
     <div class="form-group">
       <label>Nome</label>
-      <input type="text" class="form-control" #nomeInput>
+      <input type="text" class="form-control"
+        (input)="alterarNome($event)"
+        [value]="nome">
     </div>
 
     <button type="button" class="btn btn-primary" 
-      (click)="adicionar(nomeInput.value)">Adicionar</button>
+      (click)="adicionar()" [disabled]="nome.length == 0">Adicionar</button>
+    <!-- <button type="button" class="btn btn-primary" 
+      (click)="adicionar(nomeInput.value)" bind-disabled="nome.length == 0">Adicionar</button> -->
 </div>
