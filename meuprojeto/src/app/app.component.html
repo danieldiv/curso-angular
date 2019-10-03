@@ -14,11 +14,8 @@
       (click)="adicionar()" [disabled]="nome.length == 0">Adicionar</button>
 
       <div class="row" style="margin-top: 20px">
-        <div class="col-2" *ngFor="let funcionario of funcionarios">
-            <div class="card">
-              <img class="card-img-top" src="https://randomuser.me/api/portraits/men/{{funcionario.id}}.jpg" alt="Imagem de capa do card">
-              <div class="card-body">{{funcionario.nome}}</div>
-            </div>
+        <div class="col-2" *ngFor="let f of funcionarios">
+            <app-funcionario-card [obj]="f"></app-funcionario-card>
         </div>
       </div>
 </div>
