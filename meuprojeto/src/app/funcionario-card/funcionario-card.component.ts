@@ -21,15 +21,14 @@ export class FuncionarioCardComponent {
 
   isAdmin() {
     console.log(this.funcionario.nome.startsWith('T'));
-    
+
     return this.funcionario.nome.startsWith('T');
   }
 
   getEstilosCartao() {
     return {
       'border-width.px': this.funcionario.id,
-      backgroundColor: this.funcionario.id % 2 === 0 
-        ? 'lightblue' : 'lightgreen'
+      backgroundColor: this.funcionario.id % 2 === 0 ? 'lightblue' : 'lightgreen'
     };
   }
 }
