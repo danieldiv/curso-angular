@@ -31,3 +31,11 @@ label {
 .col-data-content {
   text-align: center;
 }
+
+.col-acoes-header {
+  width: 110px;
+}
+
+.col-acoes-content {
+  text-align: center;
+}
