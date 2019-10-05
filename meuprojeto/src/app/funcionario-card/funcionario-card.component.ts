@@ -20,8 +20,6 @@ export class FuncionarioCardComponent {
   // }
 
   isAdmin() {
-    console.log(this.funcionario.nome.startsWith('T'));
-
     return this.funcionario.nome.startsWith('T');
   }
 
