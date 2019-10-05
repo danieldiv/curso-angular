@@ -26,7 +26,7 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="lancamentos">
+      <p-table [value]="lancamentos" [paginator]="true" [rows]="2">
         <ng-template pTemplate="header">
           <tr>
             <th>Pessoa</th>
