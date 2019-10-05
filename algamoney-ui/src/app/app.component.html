@@ -14,7 +14,7 @@
       <label style="display: block">Vencimento</label>
       <input pInputText type="text" style="width: 95px">
 
-      <label class="item-grudadeo">até</label>
+      <label class="item-grudado">até</label>
       <input pInputText type="text" style="width: 95px">
     </div>
 
@@ -47,8 +47,8 @@
               {{lancamento.valor}}
             </td>
             <td class="col-acoes-content">
-              <a pButton icon="pi pi-pencil" class="item-grudado"></a>
-              <button pButton icon="pi pi-trash"></button>
+              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" class="item-grudado"></a>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
             </td>
           </tr>
         </ng-template>
