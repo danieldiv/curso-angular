@@ -5,7 +5,8 @@ Funcionario adicionado <strong>{{nome}}</strong>
 <div class="form-group">
     <label>Nome</label>
     <input type="text" class="form-control" [(ngModel)]="nome"
-    (focus)="adicionado=false" appCampoColorido>
+    (focus)="adicionado=false" [appCampoColorido]="'yellow'">
+    <!-- (focus)="adicionado=false" appCampoColorido cor="red"> -->
 </div>
 
 <button type="button" class="btn btn-primary"
