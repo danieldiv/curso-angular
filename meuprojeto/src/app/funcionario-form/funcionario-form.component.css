@@ -1,3 +1,7 @@
 label {
     color: red;
 }
+
+button {
+  margin-right: 4px;
+}
