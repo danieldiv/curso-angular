@@ -1,7 +1,12 @@
 <div class="container">
 
-  {{ cliente | json }}
-  {{ usuarioForm.valid }}
+  <!-- {{ usuarioForm.valid }}
+  <br>
+  {{ usuarioForm.invalid }} -->
+
+  <div *ngIf="usuarioForm.invalid" class="alert alert-danger">
+    Preencha todos os campos corretamente
+  </div>
 
   <!-- <form ngNoForm> ignora a submissao do angular -->
   <form #usuarioForm="ngForm" (ngSubmit)="salvar(usuarioForm)">
