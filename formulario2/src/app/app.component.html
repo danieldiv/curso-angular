@@ -1,5 +1,7 @@
 <div class="container">
 
+  {{ cliente | json }}
+
   <div *ngIf="usuarioForm.invalid && usuarioForm.dirty"
     class="alert alert-danger">
       Preencha todos os campos corretamente
