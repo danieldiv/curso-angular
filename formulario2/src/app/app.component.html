@@ -10,10 +10,6 @@
       <input autocomplete="off" type="text" class="form-control" name="primeiroNome"
         [(ngModel)]="cliente.nome" required minlength="10" #nome="ngModel">
 
-        <!-- Touched: {{ nome.touched }}<br> quando tocou no campo
-        Pristine: {{ nome.pristine }}<br> alga intacto, nao foi mechido no campo
-        Dirty: {{ nome.dirty }} o campo foi mechido -->
-
       <div *ngIf="nome.hasError('required') && nome.touched">Informe um nome</div>
       <div *ngIf="nome.hasError('minlength')  && nome.touched">O nome deve ser completo</div>
     </div>
