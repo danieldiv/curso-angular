@@ -1,30 +1,29 @@
 <div class="container">
 
-  <!-- {{ usuarioForm.valid }}
-  <br>
-  {{ usuarioForm.invalid }} -->
-
-  <div autocomplete="false" *ngIf="usuarioForm.invalid" class="alert alert-danger">
+  <div autocomplete="false" *ngIf="usuarioForm.invalid && usuarioForm.dirty" class="alert alert-danger">
     Preencha todos os campos corretamente
   </div>
 
-  <!-- <form ngNoForm> ignora a submissao do angular -->
   <form #usuarioForm="ngForm" (ngSubmit)="salvar(usuarioForm)">
     <div class="form-group">
       <label class="form-control-label">Nome</label>
       <input autocomplete="off" type="text" class="form-control" name="primeiroNome"
         [(ngModel)]="cliente.nome" required minlength="10" #nome="ngModel">
 
-      <div *ngIf="nome.hasError('required')">Informe um nome</div>
-      <div *ngIf="nome.hasError('minlength')">O nome deve ser completo</div>
+        <!-- Touched: {{ nome.touched }}<br> quando tocou no campo
+        Pristine: {{ nome.pristine }}<br> alga intacto, nao foi mechido no campo
+        Dirty: {{ nome.dirty }} o campo foi mechido -->
+
+      <div *ngIf="nome.hasError('required') && nome.touched">Informe um nome</div>
+      <div *ngIf="nome.hasError('minlength')  && nome.touched">O nome deve ser completo</div>
     </div>
 
     <div class="form-group">
       <label class="form-control-label">E-mail</label>
       <input type="text" class="form-control" name="emailAdress"
-        [(ngModel)]="cliente.email" email #email="ngModel">
+        [(ngModel)]="cliente.email" required email #email="ngModel">
 
-        <div *ngIf="email.invalid">Informe um e-mail valido</div>
+        <div *ngIf="email.invalid  && email.touched">Informe um e-mail valido</div>
     </div>
 
     <div class="form-group">
@@ -36,7 +35,7 @@
           [value]="profissao">{{ profissao }}</option>
       </select>
 
-      <div *ngIf="profissao.invalid">Informe uma profissão</div>
+      <div *ngIf="profissao.invalid  && profissao.touched">Informe uma profissão</div>
     </div>
 
     <button type="submit" class="btn btn-primary"
