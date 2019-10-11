@@ -29,12 +29,14 @@
         <input pInputText type="text" placeholder="0,00">
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Categoria</label>
-        <input pInputText type="text">
+        <label>Categoria {{ categoria.value }}</label>
+        <p-dropdown [options]="categorias" placeholder="Selecione"
+          #categoria></p-dropdown>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Pessoa</label>
-        <input pInputText type="text">
+        <label>Pessoa {{ pessoa.value }}</label>
+        <p-dropdown [options]="pessoas" placeholder="Selecione"
+          [filter]="true" #pessoa></p-dropdown>
       </div>
       <div class="ui-g-12 ui-fluid">
         <label>Observação</label>
