@@ -9,7 +9,7 @@ export class LancamentoCadastroComponent implements OnInit {
 
   tipos = [
     { label: 'Receita', value: 'RECEITA' },
-    { label: 'Receita', value: 'DESPESA' }
+    { label: 'Despesa', value: 'DESPESA' }
   ];
 
   categorias = [
