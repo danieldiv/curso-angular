@@ -1,5 +1,8 @@
 <div class="container">
-  <form autocomplete="off">
+
+  {{ lancamentoForm.invalid }}
+
+  <form autocomplete="off" #lancamentoForm="ngForm">
 
     <div class="ui-g">
       <div class="ui-g-12">
@@ -13,8 +16,10 @@
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>Vencimento</label>
         <p-calendar dateFormat="dd/mm/yy"
-          [inline]="false" [readonlyInput]="true"
-          [showIcon]="false"></p-calendar>
+          [inline]="false" [readonlyInput]="true" [showIcon]="false"
+          name="vencimento" ngModel #vencimento="ngModel" required></p-calendar>
+
+        <app-message [control]="vencimento" error="required"></app-message>
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
@@ -37,13 +42,13 @@
         <label>Valor</label>
         <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
           [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false}"
-          ngModel>
+          ngModel name="valor" #valor="ngModel" required>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Categoria {{ categoria.value }}</label>
         <p-dropdown [options]="categorias" placeholder="Selecione"
-          #categoria></p-dropdown>
+          #categoria="ngModel" name="categoria" ngModel required></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
@@ -58,7 +63,8 @@
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar" class="item-grudado"></button>
+        <button pButton type="submit" label="Salvar"
+          class="item-grudado" [disabled]="lancamentoForm.invalid"></button>
         <button pButton type="button" label="Novo" class="item-grudado ui-button-info"></button>
         <a href="javascrip:;">Voltar para pesquisa</a>
       </div>
