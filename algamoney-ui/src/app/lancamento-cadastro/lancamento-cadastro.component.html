@@ -18,8 +18,6 @@
         <p-calendar dateFormat="dd/mm/yy"
           [inline]="false" [readonlyInput]="true" [showIcon]="false"
           name="vencimento" ngModel #vencimento="ngModel" required></p-calendar>
-
-        <app-message [control]="vencimento" error="required"></app-message>
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
@@ -53,8 +51,8 @@
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Pessoa {{ pessoa.value }}</label>
-        <p-dropdown [options]="pessoas" placeholder="Selecione"
-          [filter]="true" #pessoa></p-dropdown>
+        <p-dropdown [options]="pessoas" placeholder="Selecione" name="pessoa"
+          [filter]="true" ngModel #pessoa="ngModel" required></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-fluid">
