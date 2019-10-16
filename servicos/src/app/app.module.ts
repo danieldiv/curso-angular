@@ -6,6 +6,15 @@ import { FuncionarioCardComponent } from './funcionario-card/funcionario-card.co
 import { FuncionarioFormComponent } from './funcionario-form/funcionario-form.component';
 import { FuncionarioService, FuncionarioAbreviadoService } from './funcionario.service';
 
+const criarFuncionarioService = () => {
+  return new FuncionarioAbreviadoService(2);
+};
+
+// é o mesmo que o de cima
+// function criarFuncionarioService2() {
+
+// }
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +25,7 @@ import { FuncionarioService, FuncionarioAbreviadoService } from './funcionario.s
     BrowserModule,
   ],
   providers: [
-    { provide: FuncionarioService, useClass: FuncionarioAbreviadoService }
+    { provide: FuncionarioService, useFactory: criarFuncionarioService }
   ],
   bootstrap: [AppComponent]
 })
