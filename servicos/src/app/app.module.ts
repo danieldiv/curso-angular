@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FuncionarioCardComponent } from './funcionario-card/funcionario-card.component';
 import { FuncionarioFormComponent } from './funcionario-form/funcionario-form.component';
-import { FuncionarioService } from './funcionario.service';
+import { FuncionarioService, FuncionarioAbreviadoService } from './funcionario.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,9 @@ import { FuncionarioService } from './funcionario.service';
   imports: [
     BrowserModule,
   ],
-  providers: [FuncionarioService],
+  providers: [
+    { provide: FuncionarioService, useClass: FuncionarioAbreviadoService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
