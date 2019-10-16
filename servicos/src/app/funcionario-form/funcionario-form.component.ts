@@ -15,7 +15,6 @@ export class FuncionarioFormComponent {
   ) { }
 
   adicionar(nome: string) {
-    this.logService.log(`Adicionando ${nome}`);
     this.funcionarioService.adicionar(nome);
   }
 

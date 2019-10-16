@@ -19,7 +19,6 @@ import { LogService } from './log.service';
   providers: [
     FuncionarioService,
     LogService,
-    { provide: 'LogPrefixo', useValue: 'LOG2' }
   ],
   bootstrap: [AppComponent]
 })
