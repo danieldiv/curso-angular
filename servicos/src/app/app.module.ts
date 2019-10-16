@@ -4,16 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FuncionarioCardComponent } from './funcionario-card/funcionario-card.component';
 import { FuncionarioFormComponent } from './funcionario-form/funcionario-form.component';
-import { FuncionarioService, FuncionarioAbreviadoService } from './funcionario.service';
-
-const criarFuncionarioService = () => {
-  return new FuncionarioAbreviadoService(2);
-};
-
-// é o mesmo que o de cima
-// function criarFuncionarioService2() {
-
-// }
+import { FuncionarioService } from './funcionario.service';
+import { LogService } from './log.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +17,9 @@ const criarFuncionarioService = () => {
     BrowserModule,
   ],
   providers: [
-    { provide: FuncionarioService, useFactory: criarFuncionarioService }
+    FuncionarioService,
+    LogService,
+    { provide: 'LogPrefixo', useValue: 'LOG2' }
   ],
   bootstrap: [AppComponent]
 })
