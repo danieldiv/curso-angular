@@ -8,9 +8,21 @@
       "nome": "São Paulo",
       "id": 2
     },
-      {
+    {
       "nome": "Fortaleza s",
       "id": 3
+    },
+    {
+      "nome": "Goiania",
+      "id": 4
+    },
+    {
+      "nome": "Rio de janeiro",
+      "id": 5
+    },
+    {
+      "nome": "Minas Gerais",
+      "id": 6
     }
   ]
 }

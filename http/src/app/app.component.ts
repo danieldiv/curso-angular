@@ -13,15 +13,34 @@ export class AppComponent implements OnInit {
   constructor(private cidadeService: CidadeService) {}
 
   ngOnInit() {
+    this.consultar();
+  }
+
+  consultar() {
     this.cidadeService.consultar()
-      .then(cidades => {
-        this.cidades = cidades;
-      });
+      .then(dados => {
+        this.cidades = dados;
+    });
   }
 
   adicionar(nome: string) {
-    alert(nome);
+    this.cidadeService.adicionar({ nome })
+      .then(cidade => {
+        alert(`Cidade ${cidade.nome} adicionado com codigo ${cidade.id}!`);
+        this.consultar();
+      });
+
   }
+
+  // adicionar(nome: string) {
+  //   this.cidadeService.adicionar({ nome: nome });
+  //   alert(nome);
+  // }
+
+  // adicionar(n: string) {
+  //   this.cidadeService.adicionar({ nome: n });
+  //   alert(nome);
+  // }
 
   excluir(id: number) {
     alert(id);
