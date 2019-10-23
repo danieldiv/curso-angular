@@ -18,10 +18,15 @@ export class CidadeService {
       .toPromise();
   }
 
-  excluir(id: number): Promise<void> {
-    return this.http.delete(`http://localhost:3000/cidades/${id}`)
-      .toPromise()
-      .then(() => null);
+  async excluir(id: number): Promise<void> {
+    await this.http.delete(`http://localhost:3000/cidades/${id}`)
+      .toPromise();
+    return null;
+  }
+
+  atualizar(cidade: any): Promise<any> {
+    return this.http.put(`http://localhost:3000/cidades/${cidade.id}`, cidade)
+      .toPromise();
   }
 
 }
