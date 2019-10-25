@@ -10,17 +10,17 @@
       <div class="ui-g-12 ui-fluid">
         <label>Descrição</label>
         <input pInputText type="text" name="descricao"
-          [(ngModel)]="descricao">
+          [(ngModel)]="filtro.descricao">
       </div>
 
       <div class="ui-g-12">
         <label style="display: block">Vencimento</label>
         <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{width: '95px'}"
-          name="vecimentoInicio" [(ngModel)]="dataVencimentoInicio"></p-calendar>
+          name="vecimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio"></p-calendar>
 
         <label class="item-grudado">até</label>
         <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{width: '95px'}"
-          name="vecimentoFim" [(ngModel)]="dataVencimentoFim"></p-calendar>
+          name="vecimentoFim" [(ngModel)]="filtro.dataVencimentoFim"></p-calendar>
       </div>
 
       <div class="ui-g-12">
