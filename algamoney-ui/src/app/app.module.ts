@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
@@ -18,7 +18,6 @@ import { LancamentoService } from './lancamentos/lancamento.service';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    // HttpHeaders,
 
     LancamentosModule,
     PessoasModule
