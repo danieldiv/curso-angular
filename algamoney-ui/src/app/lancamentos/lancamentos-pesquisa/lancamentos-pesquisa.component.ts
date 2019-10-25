@@ -11,8 +11,7 @@ import { LancamentoService, LancamentoFilter } from '../lancamento.service';
 export class LancamentosPesquisaComponent implements OnInit {
 
   // totalRegistros = 0;
-  // filtro = new LancamentoFilter();
-  descricao: string;
+  filtro = new LancamentoFilter();
   lancamentos = [];
 
   constructor(private lancamentoService: LancamentoService) {}
@@ -22,8 +21,10 @@ export class LancamentosPesquisaComponent implements OnInit {
   }
 
   pesquisar() {
-    this.lancamentoService.pesquisar({descricao: this.descricao})
-      .then(lancamentos => this.lancamentos = lancamentos);
+    this.lancamentoService.pesquisar(this.filtro)
+      .then(resultado => {
+        this.lancamentos = resultado.lancamentos;
+      });
   }
 
   // pesquisar(pagina = 0) {
