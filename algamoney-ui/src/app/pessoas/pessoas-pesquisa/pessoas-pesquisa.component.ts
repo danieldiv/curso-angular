@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LancamentoService } from 'src/app/lancamentos/lancamento.service';
 import { PessoaService, PessoaFiltro } from '../pessoa.service';
+
+import { LazyLoadEvent } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -9,17 +10,33 @@ import { PessoaService, PessoaFiltro } from '../pessoa.service';
 })
 export class PessoasPesquisaComponent implements OnInit {
 
+  totalRegistros = 0;
   filtro = new PessoaFiltro();
   pessoas = [];
 
   constructor(private pessoaService: PessoaService) {}
 
   ngOnInit() {
-    this.pesquisar();
+    // this.listarTodos();
   }
 
-  pesquisar() {
-    this.pessoaService.pesquisar(this.filtro)
+  listarTodos() {
+    this.pessoaService.listarTodos()
       .then(pessoas => this.pessoas = pessoas);
+  }
+
+  pesquisar(pagina = 0) {
+    this.filtro.pagina = pagina;
+
+    this.pessoaService.pesquisar(this.filtro)
+      .then(resultado => {
+        this.totalRegistros = resultado.total;
+        this.pessoas = resultado.pessoas;
+      });
+  }
+
+  aoMudarPagina(event: LazyLoadEvent) {
+    const pagina = event.first / event.rows;
+    this.pesquisar(pagina);
   }
 }

@@ -1,4 +1,7 @@
-<p-table [value]="pessoas" [paginator]="true" [rows]="5" [responsive]="true">
+<p-table [value]="pessoas" [responsive]="true"
+  [paginator]="true" [rows]="5"
+  [lazy]="true" [totalRecords]="totalRegistros"
+  (onLazyLoad)="aoMudarPagina($event)">
 
     <ng-template pTemplate="header">
       <tr>
@@ -24,5 +27,8 @@
           <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
         </td>
       </tr>
-    </ng-template>
+    </ng-template>]
+    <ng-template pTemplate=emptymessage>
+        Nenhuma pessoa encontrada
+      </ng-template>
   </p-table>

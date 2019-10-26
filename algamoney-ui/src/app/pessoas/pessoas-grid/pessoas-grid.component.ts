@@ -9,4 +9,9 @@ export class PessoasGridComponent {
 
   @Input() pessoas = [];
 
+  // aoMudarPagina(event: LazyLoadEvent) {
+  //   const pagina = event.first / event.rows;
+  //   this.pesquisar(pagina);
+  // }
+
 }
