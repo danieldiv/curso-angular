@@ -34,21 +34,4 @@ export class LancamentosPesquisaComponent implements OnInit {
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
   }
-
-  // pesquisar(pagina = 0) {
-  //   this.filtro.pagina = pagina;
-
-  //   this.lancamentoService.pesquisar(this.filtro)
-  //     .then(resultado => {
-  //       this.totalRegistros = resultado.total;
-  //       this.lancamentos = resultado.lancamentos;
-  //     });
-  // }
-
-  // aoMudarPagina(event: LazyLoadEvent) {
-  //   const pagina = event.first / event.rows;
-  //   this.pesquisar(pagina);
-  //   console.log(event);
-  // }
-
 }

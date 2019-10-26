@@ -12,8 +12,8 @@
     <ng-template pTemplate="body" let-pessoa>
       <tr>
         <td>{{pessoa.nome}}</td>
-        <td>{{pessoa.cidade}}</td>
-        <td>{{pessoa.estado}}</td>
+        <td>{{pessoa.endereco.cidade}}</td>
+        <td>{{pessoa.endereco.estado}}</td>
         <td class="col-ativo-content">
           <a href="#" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top">
               {{pessoa.ativo ? 'Ativo' : 'Inativo'}}

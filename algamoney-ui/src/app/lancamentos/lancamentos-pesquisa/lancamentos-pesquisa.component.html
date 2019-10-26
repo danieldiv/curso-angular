@@ -36,10 +36,6 @@
         [paginator]="true" [rows]="filtro.itensPorPagina"
         [lazy]="true" [totalRecords]="totalRegistros"
         (onLazyLoad)="aoMudarPagina($event)">
-      <!-- <p-table [value]="lancamentos" [responsive]="true"
-          [paginator]="true" [rows]="filtro.itensPorPagina"
-          [lazy]="true" [totalRecords]="totalRegistros"
-          (onLazyLoad)="aoMudarPagina($event)"> -->
         <ng-template pTemplate="header">
           <tr>
             <th>Pessoa</th>
