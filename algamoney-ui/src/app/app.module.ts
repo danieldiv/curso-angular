@@ -21,19 +21,11 @@ registerLocaleData(localePt);
     BrowserAnimationsModule,
     HttpClientModule,
 
-    // ToastyModule,
-    // ConfirmDialogModule,
-
     CoreModule,
     LancamentosModule,
     PessoasModule
   ],
-  providers: [
-    // LancamentoService,
-    // PessoaService,
-    // ConfirmationService,
-    // { provide: LOCALE_ID, useValue: 'pt-BR'}
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
