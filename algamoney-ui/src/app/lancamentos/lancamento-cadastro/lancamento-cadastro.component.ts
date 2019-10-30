@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from 'src/app/categorias/categoria.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { PessoaService } from 'src/app/pessoas/pessoa.service';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -15,20 +16,17 @@ export class LancamentoCadastroComponent implements OnInit {
   ];
 
   categorias = [];
-
-  pessoas = [
-    { label: 'Daniel Alves Sanches', value: 1 },
-    { label: 'Sebastião Souza', value: 2 },
-    { label: 'Maria Abadia', value: 3 }
-  ];
+  pessoas = [];
 
   constructor(
     private categoriaService: CategoriaService,
+    private pessoaService: PessoaService,
     private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() {
     this.carregarCategorias();
+    this.carregarPessoas();
   }
 
   carregarCategorias() {
@@ -36,12 +34,14 @@ export class LancamentoCadastroComponent implements OnInit {
       .then(categorias => {
         this.categorias = categorias.map(c => ({ label: c.nome, value: c.codigo }));
       })
-      // .then(categorias => {
-      //   this.categorias = categorias.map(c => {
-      //     return { label: c.nome, value: c.codigo };
-      //   });
-      // })
       .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  carregarPessoas() {
+    return this.pessoaService.listarTodos()
+      .then(pessoas => {
+        this.pessoas = pessoas.map(p => ({ label: p.nome, value: p.codigo }));
+      });
   }
 
 }
