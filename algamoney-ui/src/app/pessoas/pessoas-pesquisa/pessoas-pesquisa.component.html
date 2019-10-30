@@ -7,9 +7,6 @@
         <h1>Pessoas</h1>
       </div>
 
-      {{ categorias | json }}
-      <!-- {{ pessoas }} -->
-
       <div class="ui-g-12 ui-fluid">
         <label>Nome</label>
         <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
@@ -17,7 +14,6 @@
 
       <div class="ui-g-12">
         <button pButton label="Pesquisar"></button>
-        <button pButton label="tete" (click)="teste()"></button>
       </div>
 
   </form>

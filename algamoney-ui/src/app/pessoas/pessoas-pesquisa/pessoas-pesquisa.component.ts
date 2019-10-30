@@ -17,13 +17,10 @@ export class PessoasPesquisaComponent implements OnInit {
   totalRegistros = 0;
   filtro = new PessoaFiltro();
   pessoas = [];
-  categorias = [];
   @ViewChild('tabelaPessoa', {static: true}) grid: Table;
 
   constructor(
     private pessoaService: PessoaService,
-    private categoriaService: CategoriaService,
-
     private errorHandler: ErrorHandlerService,
     private confirmation: ConfirmationService,
     private toast: ToastyService
@@ -31,21 +28,11 @@ export class PessoasPesquisaComponent implements OnInit {
 
   ngOnInit() {
     // this.listarTodos();
-    this.teste();
   }
 
   listarTodos() {
     this.pessoaService.listarTodos()
       .then(pessoas => this.pessoas = pessoas);
-  }
-
-  teste() {
-    console.log('teste');
-
-    this.categoriaService.listarTodos()
-      .then(categorias => this.categorias = categorias);
-      console.log('cat: ' + this.categorias);
-
   }
 
   pesquisar(pagina = 0) {
