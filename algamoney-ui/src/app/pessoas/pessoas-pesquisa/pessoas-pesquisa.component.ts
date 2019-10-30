@@ -5,6 +5,7 @@ import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/ap
 import { Table } from 'primeng/table';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { CategoriaService } from 'src/app/categorias/categoria.service';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -16,10 +17,13 @@ export class PessoasPesquisaComponent implements OnInit {
   totalRegistros = 0;
   filtro = new PessoaFiltro();
   pessoas = [];
+  categorias = [];
   @ViewChild('tabelaPessoa', {static: true}) grid: Table;
 
   constructor(
     private pessoaService: PessoaService,
+    private categoriaService: CategoriaService,
+
     private errorHandler: ErrorHandlerService,
     private confirmation: ConfirmationService,
     private toast: ToastyService
@@ -27,11 +31,21 @@ export class PessoasPesquisaComponent implements OnInit {
 
   ngOnInit() {
     // this.listarTodos();
+    this.teste();
   }
 
   listarTodos() {
     this.pessoaService.listarTodos()
       .then(pessoas => this.pessoas = pessoas);
+  }
+
+  teste() {
+    console.log('teste');
+
+    this.categoriaService.listarTodos()
+      .then(categorias => this.categorias = categorias);
+      console.log('cat: ' + this.categorias);
+
   }
 
   pesquisar(pagina = 0) {
@@ -40,6 +54,7 @@ export class PessoasPesquisaComponent implements OnInit {
     this.pessoaService.pesquisar(this.filtro)
       .then(resultado => {
         this.totalRegistros = resultado.total;
+
         this.pessoas = resultado.pessoas;
       })
       .catch(erro => this.errorHandler.handle(erro));
@@ -62,6 +77,19 @@ export class PessoasPesquisaComponent implements OnInit {
         this.toast.success('Pessoa excluida com sucesso');
       })
       .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  alternarStatus(pessoa: any): void {
+    const novoStatus = !pessoa.ativo;
+
+    this.pessoaService.mudarStatus(pessoa.codigo, novoStatus)
+    .then(() => {
+      const acao  = novoStatus ? 'ativada' : 'desativada';
+
+      this.grid.reset();
+      this.toast.success(`Pessoa ${acao} com sucesso`);
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
 
   aoMudarPagina(event: LazyLoadEvent) {

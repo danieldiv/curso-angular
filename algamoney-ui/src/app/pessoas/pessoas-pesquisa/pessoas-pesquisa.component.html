@@ -7,6 +7,9 @@
         <h1>Pessoas</h1>
       </div>
 
+      {{ categorias | json }}
+      <!-- {{ pessoas }} -->
+
       <div class="ui-g-12 ui-fluid">
         <label>Nome</label>
         <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
@@ -14,6 +17,7 @@
 
       <div class="ui-g-12">
         <button pButton label="Pesquisar"></button>
+        <button pButton label="tete" (click)="teste()"></button>
       </div>
 
   </form>
@@ -40,7 +44,8 @@
                 <td>{{pessoa.endereco.cidade}}</td>
                 <td>{{pessoa.endereco.estado}}</td>
                 <td class="col-ativo-content">
-                  <a href="#" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top">
+                  <a href="#" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top"
+                    (click)="alternarStatus(pessoa)">
                       {{pessoa.ativo ? 'Ativo' : 'Inativo'}}
                   </a>
                 </td>
