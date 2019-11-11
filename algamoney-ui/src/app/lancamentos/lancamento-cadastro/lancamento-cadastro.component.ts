@@ -25,7 +25,6 @@ export class LancamentoCadastroComponent implements OnInit {
   categorias = [];
   pessoas = [];
   lancamento = new Lancamento();
-  attLancamento = new Lancamento();
 
   constructor(
     private categoriaService: CategoriaService,
@@ -37,24 +36,37 @@ export class LancamentoCadastroComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const codigo = this.route.snapshot.params['codigo'];
-    console.log(codigo);
+    const codigoLancamento = this.route.snapshot.params['codigo'];
 
-    if (codigo != null) {
-      this.buscarPeloCodigo(this.route.snapshot.params['codigo']);
+    if (codigoLancamento) {
+      this.carregarLancamento(codigoLancamento);
     }
-
 
     this.carregarCategorias();
     this.carregarPessoas();
   }
 
-  buscarPeloCodigo(codigo: number) {
+  get editando() {
+    return Boolean(this.lancamento.codigo);
+  }
+
+  carregarLancamento(codigo: number) {
     this.lancamentoService.buscarPorCodigo(codigo)
-      .then(t => this.attLancamento = t);
+      .then(lancamento => {
+        this.lancamento = lancamento;
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   salvar(form: FormControl) {
+    if (this.editando) {
+      this.atualizarLancamento(form);
+    } else {
+      this.adicionarLancamento(form);
+    }
+  }
+
+  adicionarLancamento(form: FormControl) {
     this.lancamentoService.adicionar(this.lancamento)
       .then(() => {
         this.toast.success('Lançamento adicionado com sucesso');
@@ -63,8 +75,17 @@ export class LancamentoCadastroComponent implements OnInit {
         this.lancamento = new Lancamento();
       })
       .catch(erro => this.errorHandler.handle(erro));
-
   }
+
+  atualizarLancamento(form: FormControl) {
+    this.lancamentoService.atualizar(this.lancamento)
+      .then(lancamento => {
+          this.lancamento = lancamento;
+
+          this.toast.success('Lançamento alterado com sucesso');
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+      }
 
   carregarCategorias() {
     return this.categoriaService.listarTodos()
