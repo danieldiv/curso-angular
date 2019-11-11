@@ -25,6 +25,7 @@ export class LancamentoCadastroComponent implements OnInit {
   categorias = [];
   pessoas = [];
   lancamento = new Lancamento();
+  attLancamento = new Lancamento();
 
   constructor(
     private categoriaService: CategoriaService,
@@ -36,11 +37,21 @@ export class LancamentoCadastroComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.params['codigo']);
+    const codigo = this.route.snapshot.params['codigo'];
+    console.log(codigo);
+
+    if (codigo != null) {
+      this.buscarPeloCodigo(this.route.snapshot.params['codigo']);
+    }
 
 
     this.carregarCategorias();
     this.carregarPessoas();
+  }
+
+  buscarPeloCodigo(codigo: number) {
+    this.lancamentoService.buscarPorCodigo(codigo)
+      .then(t => this.attLancamento = t);
   }
 
   salvar(form: FormControl) {

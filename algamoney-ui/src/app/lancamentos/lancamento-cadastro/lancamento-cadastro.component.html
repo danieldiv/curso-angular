@@ -7,6 +7,8 @@
         <h1>Novo Lançamento</h1>
       </div>
 
+      {{ attLancamento | json }}
+
       <div class="ui-g-12">
         <p-selectButton name="tipo" [options]="tipos"
           [(ngModel)]="lancamento.tipo"
