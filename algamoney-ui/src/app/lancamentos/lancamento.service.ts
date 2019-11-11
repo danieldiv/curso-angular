@@ -65,8 +65,6 @@ export class LancamentoService {
   }
 
   adicionar(lancamento: Lancamento): Promise<Lancamento> {
-    console.log('adicionario: ', lancamento);
-
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
       .append('Content-Type', 'application/json');
@@ -78,8 +76,6 @@ export class LancamentoService {
   }
 
   atualizar(lancamento: Lancamento): Promise<Lancamento> {
-    console.log('atualizar: ', lancamento);
-
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
       .append('Content-Type', 'application/json');

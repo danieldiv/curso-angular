@@ -49,14 +49,14 @@
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Categoria {{ categoria.value }}</label>
+        <label>Categoria</label>
         <p-dropdown [options]="categorias" placeholder="Selecione"
           #categoria="ngModel" name="categoria" ngModel required
           [(ngModel)]="lancamento.categoria.codigo"></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Pessoa {{ pessoa.value }}</label>
+        <label>Pessoa</label>
         <p-dropdown [options]="pessoas" placeholder="Selecione" name="pessoa"
           [filter]="true" ngModel #pessoa="ngModel"
           [(ngModel)]="lancamento.pessoa.codigo"
@@ -72,7 +72,8 @@
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar"
           class="item-grudado" [disabled]="lancamentoForm.invalid"></button>
-        <button pButton type="button" label="Novo" class="item-grudado ui-button-info"></button>
+        <button pButton type="button" label="Novo" class="item-grudado ui-button-info"
+          (click)="novo(f)"></button>
         <a routerLink="/lancamentos">Voltar para pesquisa</a>
       </div>
     </div>
