@@ -16,7 +16,7 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
     PessoaCadastroComponent,
-    PessoasGridComponent,
+    // PessoasGridComponent,
     PessoasPesquisaComponent
   ],
   imports: [
@@ -31,9 +31,6 @@ import { SharedModule } from '../shared/shared.module';
 
     SharedModule
   ],
-  exports: [
-    PessoaCadastroComponent,
-    PessoasPesquisaComponent
-  ]
+  exports: []
 })
 export class PessoasModule { }

@@ -22,7 +22,6 @@ import { RouterModule } from '@angular/router';
   declarations: [
     LancamentoCadastroComponent,
     LancamentosPesquisaComponent,
-
   ],
   imports: [
     CommonModule,
@@ -42,9 +41,6 @@ import { RouterModule } from '@angular/router';
 
     SharedModule
   ],
-  exports: [
-    LancamentoCadastroComponent,
-    LancamentosPesquisaComponent
-  ]
+  exports: []
 })
 export class LancamentosModule { }
