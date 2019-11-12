@@ -6,6 +6,7 @@ import { Table } from 'primeng/table';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { CategoriaService } from 'src/app/categorias/categoria.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -23,11 +24,12 @@ export class PessoasPesquisaComponent implements OnInit {
     private pessoaService: PessoaService,
     private errorHandler: ErrorHandlerService,
     private confirmation: ConfirmationService,
-    private toast: ToastyService
+    private toast: ToastyService,
+    private title: Title
   ) {}
 
   ngOnInit() {
-    // this.listarTodos();
+    this.title.setTitle('Pesquisa de Pessoas');
   }
 
   listarTodos() {

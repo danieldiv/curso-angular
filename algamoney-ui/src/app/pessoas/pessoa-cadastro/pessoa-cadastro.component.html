@@ -4,7 +4,7 @@
 
     <div class="ui-g">
       <div class="ui-g-12">
-        <h1>Nova Pessoa</h1>
+        <h1>{{ editando ? 'Edição de' : 'Nova' }} Pessoa</h1>
       </div>
 
       <div class="ui-g-12 ui-fluid">
@@ -89,9 +89,10 @@
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar"
           class="item-grudado" [disabled]="f.invalid"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info"
+          (click)="novo(f)"></button>
 
-        <a href="javascrip:;"> Voltar para a pesquisa</a>
+        <a routerLink="/pessoas"> Voltar para a pesquisa</a>
       </div>
     </div>
 
