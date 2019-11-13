@@ -1,5 +1,7 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/components/common/api';
@@ -9,9 +11,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorHandlerService } from './error-handler.service';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
-import { RouterModule } from '@angular/router';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
-import { Title } from '@angular/platform-browser';
+import { CategoriaService } from '../categorias/categoria.service';
+import { AuthService } from '../seguranca/auth.service';
 
 @NgModule({
   declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
@@ -30,7 +32,9 @@ import { Title } from '@angular/platform-browser';
   providers: [
     LancamentoService,
     PessoaService,
+    CategoriaService,
     ErrorHandlerService,
+    AuthService,
 
     ConfirmationService,
     Title,
