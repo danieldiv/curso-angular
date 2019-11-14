@@ -31,22 +31,22 @@ export class AuthService {
         this.armazenarToken(response['access_token']);
       })
       .catch(response => {
-        console.log(response);
+        const responseError = response.error;
+        if (response.status === 400) {
+          if (responseError.error === 'invalid_grant') {
+            return Promise.reject('Usuario ou Senha inválida');
+          }
+        }
+        return Promise.reject(response);
       });
   }
 
   private armazenarToken(token: string) {
-    console.log('armazenando');
-
     this.jwtPayLoad = this.jwtHelper.decodeToken(token);
     localStorage.setItem('token', token);
-
-    console.log('pay: ', this.jwtPayLoad);
   }
 
   private carregarToken() {
-    console.log('carregando');
-
     const token = localStorage.getItem('token');
 
     if (token) {

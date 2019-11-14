@@ -1,7 +1,5 @@
 <div class="container" style="max-width: 400px; margin-top: auto;">
 
-  payload: {{ auth.jwtPayload | json}}
-
   <form autocomplete="off" #f="ngForm">
 
       <div class="ui-g-12">
@@ -20,7 +18,7 @@
 
       <div class="ui-g-12 ui-fluid">
         <button pButton label="Login" type="submit" [disabled]="f.invalid"
-          (click)="login(usuario.value, senha.value)"></button>
+          (click)="login(usuario.value, senha.value); senha.value = '';"></button>
       </div>
 
     </form>
