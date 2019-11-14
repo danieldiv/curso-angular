@@ -13,7 +13,9 @@ export class AuthService {
   constructor(
     private jwtHelper: JwtHelperService,
     private http: HttpClient
-  ) { }
+  ) {
+    this.carregarToken();
+  }
 
   login(usuario: string, senha: string): Promise<void> {
     const headers = new HttpHeaders()
@@ -26,15 +28,30 @@ export class AuthService {
       .toPromise()
       .then(response => {
         console.log(response);
+        this.armazenarToken(response['access_token']);
       })
       .catch(response => {
         console.log(response);
-        this.armazenarToken(response.access_token);
       });
   }
 
   private armazenarToken(token: string) {
+    console.log('armazenando');
+
     this.jwtPayLoad = this.jwtHelper.decodeToken(token);
+    localStorage.setItem('token', token);
+
+    console.log('pay: ', this.jwtPayLoad);
+  }
+
+  private carregarToken() {
+    console.log('carregando');
+
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      this.armazenarToken(token);
+    }
   }
 
 }
