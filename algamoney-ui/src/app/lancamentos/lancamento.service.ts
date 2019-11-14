@@ -4,6 +4,17 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import * as moment from 'moment';
 import { Lancamento } from '../core/model';
 
+/**
+ * não é mais necessario a utilização de headers, pois o ouath token ja passa.
+ * eu vou manter para ficar mais facil a compreencao em sistemas futuros e por
+ * causa da configuração em segurança module:
+ *
+ * Com isso, indicamos que no domínio "localhost:8080", todas as requisições
+ * serão interceptadas e o token será adicionado.Já para "http://localhost:8080/oauth/token"
+ * não ocorrerá nenhuma interceptação, pois neste endpoint, não utilizamos o token armazendo,
+ * e sim a autenticação básica, como vimos em aulas anteriores.'
+ */
+
 export class LancamentoFilter {
   descricao: string;
   dataVencimentoInicio: Date;
@@ -20,8 +31,6 @@ export class LancamentoService {
   lancamentosUrl = 'http://localhost:8080/lancamentos';
 
   constructor(private http: HttpClient) { }
-
-
 
   pesquisar(filtro: LancamentoFilter): Promise<any> {
     let params = new HttpParams();

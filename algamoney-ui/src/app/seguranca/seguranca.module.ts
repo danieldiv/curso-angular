@@ -7,16 +7,28 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter(): string {
+  return localStorage.getItem('token');
+}
+
 @NgModule({
   declarations: [LoginFormComponent],
   imports: [
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return '';
-        }
+        // tokenGetter: tokenGetter,
+        tokenGetter, // o mesmo do de cima
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
     }),
+    // JwtModule.forRoot({
+    //   config: {
+    //     tokenGetter: () => {
+    //       return '';
+    //     }
+    //   }
+    // }),
 
     CommonModule,
     FormsModule,
@@ -27,6 +39,11 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
     SegurancaRoutingModule
   ],
   exports: [],
-  providers: [JwtHelperService]
+  providers: [
+    JwtHelperService,
+    // {
+    //   provide: Aut
+    // }
+  ]
 })
 export class SegurancaModule { }
