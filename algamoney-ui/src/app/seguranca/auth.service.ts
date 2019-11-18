@@ -10,11 +10,21 @@ export class AuthService {
   oauthTokenUrl = 'http://localhost:8080/oauth/token';
   jwtPayLoad: any;
 
+  tokensRevokeUrl = 'http://localhost:8080/tokens/revoke';
+
   constructor(
     private jwtHelper: JwtHelperService,
-    private http: HttpClient
+    private http: HttpClient,
   ) {
     this.carregarToken();
+  }
+
+  logout() {
+    return this.http.delete(this.tokensRevokeUrl, { withCredentials: true })
+      .toPromise()
+      .then(() => {
+        this.limparAccessToken();
+      });
   }
 
   login(usuario: string, senha: string): Promise<void> {
@@ -64,13 +74,18 @@ export class AuthService {
       });
   }
 
+  limparAccessToken() {
+    localStorage.removeItem('token');
+    this.jwtPayLoad = null;
+  }
+
   isAccessTokenInvalido() {
     const token = localStorage.getItem('token');
 
     return !token || this.jwtHelper.isTokenExpired(token);
   }
 
-  temQualquerPermissao(roles) {
+  temQualquerPermissao(roles: any) {
     for (const role of roles) {
       if (this.temPermissao(role)) {
         return true;
