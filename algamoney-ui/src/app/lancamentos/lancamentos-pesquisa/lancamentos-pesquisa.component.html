@@ -62,7 +62,8 @@
                 [routerLink]="['/lancamentos', lancamento.codigo]"></a>
               <button pButton icon="pi pi-trash"
                 pTooltip="Excluir" tooltipPosition="top"
-                (click)="confirmarExclusao(lancamento)"></button>
+                (click)="confirmarExclusao(lancamento)"
+                [disabled]="!auth.temPermissao('ROLE_REMOVER_LANCAMENTO')"></button>
             </td>
           </tr>
         </ng-template>
