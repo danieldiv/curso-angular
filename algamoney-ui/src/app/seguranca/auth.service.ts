@@ -70,6 +70,16 @@ export class AuthService {
     return !token || this.jwtHelper.isTokenExpired(token);
   }
 
+  temQualquerPermissao(roles) {
+    for (const role of roles) {
+      if (this.temPermissao(role)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   temPermissao(permissao: string) {
     return this.jwtPayLoad && this.jwtPayLoad.authorities.includes(permissao);
   }
