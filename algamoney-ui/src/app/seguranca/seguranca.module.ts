@@ -1,11 +1,15 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+
+import { LoginFormComponent } from './login-form/login-form.component';
+import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { MoneyHttpInterceptor } from './money-http-interceptor';
 
 export function tokenGetter(): string {
   return localStorage.getItem('token');
@@ -16,19 +20,11 @@ export function tokenGetter(): string {
   imports: [
     JwtModule.forRoot({
       config: {
-        // tokenGetter: tokenGetter,
-        tokenGetter, // o mesmo do de cima
+        tokenGetter,
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
     }),
-    // JwtModule.forRoot({
-    //   config: {
-    //     tokenGetter: () => {
-    //       return '';
-    //     }
-    //   }
-    // }),
 
     CommonModule,
     FormsModule,
@@ -41,9 +37,12 @@ export function tokenGetter(): string {
   exports: [],
   providers: [
     JwtHelperService,
-    // {
-    //   provide: Aut
-    // }
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MoneyHttpInterceptor,
+      multi: true
+    }
   ]
 })
 export class SegurancaModule { }
