@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'https://algamoney-api-sanches.herokuapp.com'
 };
