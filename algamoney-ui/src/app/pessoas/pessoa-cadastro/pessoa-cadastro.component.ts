@@ -48,7 +48,8 @@ export class PessoaCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  novo(form: FormControl) {
+  // novo(form: FormControl) {
+  novo(form: NgForm) {
     form.reset();
 
     setTimeout(function() {
@@ -58,7 +59,8 @@ export class PessoaCadastroComponent implements OnInit {
     this.router.navigate(['/pessoas/novo']);
   }
 
-  salvar(form: FormControl) {
+  // salvar(form: FormControl) {
+  salvar(form: NgForm) {
     if (this.editando) {
       this.atualizarPessoa(form);
     } else {
@@ -66,7 +68,8 @@ export class PessoaCadastroComponent implements OnInit {
     }
   }
 
-  adicionarPessoa(form: FormControl) {
+  // adicionarPessoa(form: FormControl) {
+  adicionarPessoa(form: NgForm) {
     this.pessoaService.adicionar(this.pessoa)
       .then(pessoaAdicionada => {
         this.toast.success('Pessoa salva com sucesso');
@@ -76,7 +79,8 @@ export class PessoaCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  atualizarPessoa(form: FormControl) {
+  // atualizarPessoa(form: FormControl) {
+  atualizarPessoa(form: NgForm) {
     this.pessoaService.atualizar(this.pessoa)
       .then(pessoa => {
         this.pessoa = pessoa;

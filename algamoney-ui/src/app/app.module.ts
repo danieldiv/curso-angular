@@ -28,7 +28,7 @@ registerLocaleData(localePt);
     LancamentosModule,
     PessoasModule,
     SegurancaModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
