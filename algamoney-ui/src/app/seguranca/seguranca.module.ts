@@ -11,19 +11,23 @@ import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { MoneyHttpInterceptor } from './money-http-interceptor';
 import { AuthGuard } from './auth.guard';
+import { environment } from 'src/environments/environment';
 
 export function tokenGetter(): string {
   return localStorage.getItem('token');
 }
 
 @NgModule({
+
   declarations: [LoginFormComponent],
   imports: [
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        whitelistedDomains: ['localhost:8080'],
-        blacklistedRoutes: ['http://localhost:8080/oauth/token']
+        whitelistedDomains: [`${environment.apiUrl}`],
+        blacklistedRoutes: [`${environment.apiUrl}/oauth/token`]
+        // whitelistedDomains: ['localhost:8080'],
+        // blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
     }),
 
