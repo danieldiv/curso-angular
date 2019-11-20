@@ -31,7 +31,7 @@ console.log(`${environment.apiUrl}/oauth/token`);
         // blacklistedRoutes: ['http://localhost:8080/oauth/token']
 
         whitelistedDomains: ['localhost:8080'],
-        blacklistedRoutes: [`${environment.apiUrl}/oauth/token`],
+        blacklistedRoutes: ['https://algamoney-api-sanches.herokuapp.com/oauth/token'],
       }
     }),
 
