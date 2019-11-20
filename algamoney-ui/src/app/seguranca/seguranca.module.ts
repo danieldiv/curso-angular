@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 export function tokenGetter(): string {
   return localStorage.getItem('token');
 }
+console.log(`${environment.apiUrl}/oauth/token`);
 
 @NgModule({
 
@@ -24,10 +25,13 @@ export function tokenGetter(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        whitelistedDomains: [`${environment.apiUrl}`],
-        blacklistedRoutes: [`${environment.apiUrl}/oauth/token`]
+        // whitelistedDomains: [`${environment.apiUrl}`],
+        // blacklistedRoutes: [`${environment.apiUrl}/oauth/token`],
         // whitelistedDomains: ['localhost:8080'],
         // blacklistedRoutes: ['http://localhost:8080/oauth/token']
+
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: [`${environment.apiUrl}/oauth/token`],
       }
     }),
 
