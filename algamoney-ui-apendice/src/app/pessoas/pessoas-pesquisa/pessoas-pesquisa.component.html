@@ -46,16 +46,20 @@
                   </a>
                 </td>
                 <td class="col-acoes-content">
-                  <a pButton icon="pi pi-pencil" class="item-grudado"
+                  <button pButton icon="pi pi-pencil" class="item-grudado"
                     pTooltip="Editar" tooltipPosition="top"
-                    [routerLink]="['/pessoas', pessoa.codigo]"></a>
+                    [routerLink]="['/pessoas', pessoa.codigo]"></button>
                   <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
                     (click)="confirmarExclusao(pessoa)"></button>
                 </td>
               </tr>
             </ng-template>]
-            <ng-template pTemplate=emptymessage>
-                Nenhuma pessoa encontrada
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                  <td colspan="6">
+                    Nenhuma pessoa encontrada
+                  </td>
+                </tr>
               </ng-template>
           </p-table>
 
@@ -63,7 +67,7 @@
     </div>
 
     <div class="ui-g-12">
-      <a pButton label="Nova Pessoa" routerLink="/pessoas/novo"></a>
+      <button pButton label="Nova Pessoa" routerLink="/pessoas/novo"></button>
     </div>
 
   </div>
