@@ -7,11 +7,6 @@ import { AuthGuard } from '../seguranca/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'lancamentos',
-    pathMatch: 'full'
-  },
-  {
     path: 'pessoas',
     component: PessoasPesquisaComponent,
     canActivate: [AuthGuard],
