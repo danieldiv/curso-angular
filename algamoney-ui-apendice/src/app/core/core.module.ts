@@ -1,7 +1,8 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/components/common/api';
@@ -15,6 +16,8 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
 import { CategoriaService } from '../categorias/categoria.service';
 import { AuthService } from '../seguranca/auth.service';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [NavbarComponent, PaginaNaoEncontradaComponent, NaoAutorizadoComponent],
