@@ -34,10 +34,10 @@
         <input pInputText type="text" name="descricao"
           formControlName="descricao">
 
-          <app-message [control]="formulario.get('descricao')" error="required"
+          <app-message [control]="formulario.get('descricao')" error="obrigatoriedade"
             text="Informe uma descricao"></app-message>
-          <app-message [control]="formulario.get('descricao')" error="minlength"
-            text="Minimo de {{ formulario.get('descricao').errors?.minlength?.requiredLength }} caracters"></app-message>
+          <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo"
+            text="Minimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho }} caracters"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">

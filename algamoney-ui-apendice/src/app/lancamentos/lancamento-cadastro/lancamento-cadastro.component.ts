@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -62,11 +62,11 @@ export class LancamentoCadastroComponent implements OnInit {
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       codigo: [],
-      tipo: ['RECEITA', Validators.required],
-      dataVencimento: [null, Validators.required],
+      tipo: [ 'RECEITA', Validators.required ],
+      dataVencimento: [ null, Validators.required ],
       dataPagamento: [],
-      descricao: [null, [Validators.required, Validators.minLength(5)]],
-      valor: [null, Validators.required],
+      descricao: [null, [ this.validarObrigatoriedade, this.validarTamanhoMinimo(5) ]],
+      valor: [ null, Validators.required ],
       pessoa: this.formBuilder.group({
         codigo: [ null, Validators.required ],
         nome: []
@@ -77,6 +77,17 @@ export class LancamentoCadastroComponent implements OnInit {
       }),
       observacao: []
     });
+  }
+
+  validarObrigatoriedade(input: FormControl) {
+    // const dtVencimento = input.root.get('dataVencimento').value;
+    return (input.value ? null : { obrigatoriedade: true });
+  }
+
+  validarTamanhoMinimo(valor: number) {
+    return (input: FormControl) => {
+      return (!input.value || input.value.length >= valor) ? null : { tamanhoMinimo: { tamanho: valor } };
+    };
   }
 
   carregarLancamento(codigo: number) {
