@@ -25,7 +25,7 @@
     "ng2-currency-mask": "^5.3.1",
     "ng2-toasty": "^4.0.3",
     "primeicons": "^2.0.0",
-    "primeng": "^8.0.3",
+    "primeng": "^8.1.1",
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.5.3",
     "tslib": "^1.10.0",
