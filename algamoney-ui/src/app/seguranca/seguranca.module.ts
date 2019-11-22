@@ -25,12 +25,10 @@ console.log(`${environment.apiUrl}/oauth/token`);
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        // whitelistedDomains: [`${environment.apiUrl}`],
-        // blacklistedRoutes: [`${environment.apiUrl}/oauth/token`],
         // whitelistedDomains: ['localhost:8080'],
         // blacklistedRoutes: ['http://localhost:8080/oauth/token']
 
-        whitelistedDomains: ['localhost:8080'],
+        whitelistedDomains: ['algamoney-api-sanches.herokuapp.com'],
         blacklistedRoutes: ['https://algamoney-api-sanches.herokuapp.com/oauth/token'],
       }
     }),
