@@ -16,7 +16,6 @@ import { environment } from 'src/environments/environment';
 export function tokenGetter(): string {
   return localStorage.getItem('token');
 }
-console.log(`${environment.apiUrl}/oauth/token`);
 
 @NgModule({
 

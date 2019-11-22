@@ -43,7 +43,7 @@ export class LancamentoCadastroComponent implements OnInit {
   ngOnInit() {
     this.configurarFormulario();
 
-    const codigoLancamento = this.route.snapshot.params['codigo'];
+    const codigoLancamento = this.route.snapshot.params.codigo;
 
     this.title.setTitle('Novo Lançamento');
 
@@ -83,7 +83,7 @@ export class LancamentoCadastroComponent implements OnInit {
     this.lancamentoService.buscarPorCodigo(codigo)
       .then(lancamento => {
         // this.lancamento = lancamento;
-        this.formulario.setValue(lancamento);
+        this.formulario.patchValue(lancamento);
         this.atualizarTituloEdicao();
       })
       .catch(erro => this.errorHandler.handle(erro));
@@ -111,7 +111,7 @@ export class LancamentoCadastroComponent implements OnInit {
     this.lancamentoService.atualizar(this.formulario.value)
       .then(lancamento => {
           // this.lancamento = lancamento;
-          this.formulario.setValue(lancamento);
+          this.formulario.patchValue(lancamento);
 
           this.toast.success('Lançamento alterado com sucesso');
           this.atualizarTituloEdicao();
