@@ -57,9 +57,9 @@
               {{lancamento.valor | number:'1.2-2'}}
             </td>
             <td class="col-acoes-content">
-              <a pButton icon="pi pi-pencil" pTooltip="Editar"
+              <button pButton icon="pi pi-pencil" pTooltip="Editar"
                 tooltipPosition="top" class="item-grudado"
-                [routerLink]="['/lancamentos', lancamento.codigo]"></a>
+                [routerLink]="['/lancamentos', lancamento.codigo]"></button>
               <button pButton icon="pi pi-trash"
                 pTooltip="Excluir" tooltipPosition="top"
                 (click)="confirmarExclusao(lancamento)"
@@ -67,15 +67,19 @@
             </td>
           </tr>
         </ng-template>
-        <ng-template pTemplate=emptymessage>
-          Nenhum lançamento encontrado
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="6">
+              Nenhum lançamento encontrado
+            </td>
+          </tr>
         </ng-template>
       </p-table>
 
     </div>
 
     <div class="ui-g-12">
-      <a pButton label="Novo Lançamento" routerLink="/lancamentos/novo"></a>
+      <button pButton label="Novo Lançamento" routerLink="/lancamentos/novo"></button>
     </div>
 
   </div>
