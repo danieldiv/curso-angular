@@ -147,7 +147,7 @@
 
 <p-dialog header="Novo Contato" [(visible)]="exibindoFormularioContato"
   modal="modal" *ngIf="contato">
-  <form #frmContato="ngForm">
+  <form #frmContato="ngForm" (ngSubmit)="confirmarContato(frmContato)">
     <div class="ui-g-12 ui-fluid">
       <label>Nome</label>
 
