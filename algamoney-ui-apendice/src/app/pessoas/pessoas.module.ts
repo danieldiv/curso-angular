@@ -8,6 +8,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PanelModule } from 'primeng/panel';
+import { DialogModule } from 'primeng/dialog';
 
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
@@ -29,6 +30,7 @@ import { PessoasRountingModule } from './pessoas-routing.module';
     ButtonModule,
     TableModule,
     TooltipModule,
+    DialogModule,
 
     SharedModule,
     PessoasRountingModule

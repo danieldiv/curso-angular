@@ -15,6 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PessoaCadastroComponent implements OnInit {
 
   pessoa = new Pessoa();
+  exibindoFormularioContato = false;
 
   constructor(
     private pessoaService: PessoaService,
@@ -33,6 +34,10 @@ export class PessoaCadastroComponent implements OnInit {
     }
 
     this.title.setTitle('Cadastro de Pessoa');
+  }
+
+  prepararNovoContato() {
+    this.exibindoFormularioContato = true;
   }
 
   get editando() {
