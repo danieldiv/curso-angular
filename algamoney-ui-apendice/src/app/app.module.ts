@@ -9,6 +9,7 @@ import { PessoasModule } from './pessoas/pessoas.module';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SegurancaModule } from './seguranca/seguranca.module';
     CoreModule,
     LancamentosModule,
     PessoasModule,
+    DashboardModule,
     SegurancaModule,
     AppRoutingModule,
   ],
