@@ -105,14 +105,16 @@
                   </tr>
                 </ng-template>
 
-                <ng-template pTemplate="body" let-contato>
+                <ng-template pTemplate="body" let-contato
+                  let-rowIndex=rowIndex>
                   <tr>
                     <td>{{ contato.nome }}</td>
                     <td>{{ contato.email }}</td>
                     <td>{{ contato.telefone}}</td>
                     <td class="col-acoes">
                       <button pButton icon="pi pi-pencil" type="button" class="item-grudado"
-                        pTooltip="Editar" tooltipPosition="top"></button>
+                        pTooltip="Editar" tooltipPosition="top"
+                        (click)="prepararEdicaoContato(contato, rowIndex)"></button>
                       <button pButton icon="pi pi-trash" type="top"
                         pTooltip="Excluir" tooltipPosition="top"></button>
                     </td>
@@ -135,7 +137,7 @@
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar"
           class="item-grudado" [disabled]="f.invalid"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info"
+        <button pButton type="button" label="Nova" class="ui-button-info"
           (click)="novo(f)"></button>
 
         <a routerLink="/pessoas"> Voltar para a pesquisa</a>
