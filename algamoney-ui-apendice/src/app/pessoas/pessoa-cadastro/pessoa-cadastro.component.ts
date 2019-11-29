@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormControl } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { PessoaService } from '../pessoa.service';
-import { Pessoa, Contato } from 'src/app/core/model';
+import { Pessoa } from 'src/app/core/model';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Title } from '@angular/platform-browser';
@@ -15,9 +15,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PessoaCadastroComponent implements OnInit {
 
   pessoa = new Pessoa();
-  exibindoFormularioContato = false;
-  contato: Contato;
-  contatoIndex: number;
 
   constructor(
     private pessoaService: PessoaService,
@@ -36,34 +33,6 @@ export class PessoaCadastroComponent implements OnInit {
     }
 
     this.title.setTitle('Cadastro de Pessoa');
-  }
-
-  prepararNovoContato() {
-    this.exibindoFormularioContato = true;
-    this.contato = new Contato();
-    this.contatoIndex = this.pessoa.contatos.length;
-  }
-
-  prepararEdicaoContato(contato: Contato, index: number) {
-    this.contato = this.clonarContato(contato);
-    this.exibindoFormularioContato = true;
-    this.contatoIndex = index;
-  }
-
-  confirmarContato(frm: FormControl) {
-    this.pessoa.contatos[this.contatoIndex] = this.clonarContato(this.contato);
-
-    this.exibindoFormularioContato = false;
-
-    frm.reset();
-  }
-
-  removerContato(index: number) {
-    this.pessoa.contatos.splice(index, 1);
-  }
-
-  clonarContato(contato: Contato): Contato {
-    return new Contato(contato.codigo, contato.nome, contato.email, contato.telefone);
   }
 
   get editando() {
