@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
     "@auth0/angular-jwt": "^3.0.1",
+    "chart.js": "^2.9.3",
     "moment": "^2.24.0",
     "ng2-currency-mask": "^5.3.1",
     "ng2-toasty": "^4.0.3",
