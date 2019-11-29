@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,15 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  pieChartData = {
-    labels: ['Mensal', 'Educação', 'Lazer', 'Imprevistos'],
-    datasets: [
-      {
-        data: [2500, 2700, 550, 235],
-        backgroundColor: ['#FF9900', '#109618', '#990099', '#3b3EAC']
-      }
-    ]
-  };
+  pieChartData: any;
 
   lineChartData = {
     labels: ['Domingo', 'Segunda', 'Terça', 'Quartar', 'Quinta', 'Sexta', 'Sábado'],
@@ -32,9 +25,25 @@ export class DashboardComponent implements OnInit {
     ]
   };
 
-  constructor() { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
+    this.configurarGraficaPizza();
+  }
+
+  configurarGraficaPizza() {
+    this.dashboardService.lancamentosPorCategoria()
+      .then(dados => {
+        this.pieChartData = {
+          labels: dados.map(dado => dado.categoria.nome),
+          datasets: [
+            {
+              data: dados.map(dado => dado.total),
+              backgroundColor: ['#FF9900', '#109618', '#990099', '#3b3EAC']
+            }
+          ]
+        };
+      });
   }
 
 }
