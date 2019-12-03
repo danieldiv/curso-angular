@@ -89,7 +89,7 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar"
-          class="item-grudado" [disabled]="formulario.invalid"></button>
+          class="item-grudado" [disabled]="formulario.invalid || uploadEmAndamento"></button>
         <button pButton type="button" label="Novo" class="item-grudado ui-button-info"
           (click)="novo()"></button>
         <a routerLink="/lancamentos">Voltar para pesquisa</a>
