@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { InputTextModule } from 'primeng/inputtext';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -11,7 +12,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { KeyFilterModule } from 'primeng/keyfilter';
-import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { FileUploadModule } from 'primeng/fileupload';
 
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
@@ -38,6 +39,7 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
     DropdownModule,
     KeyFilterModule,
     CurrencyMaskModule,
+    FileUploadModule,
 
     SharedModule,
     LancamentosRoutingModule

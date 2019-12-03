@@ -59,6 +59,10 @@ export class LancamentoCadastroComponent implements OnInit {
     return Boolean(this.formulario.get('codigo').value);
   }
 
+  get urlUploadAnexo() {
+    return this.lancamentoService.urlUploadAnexo();
+  }
+
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       codigo: [],
