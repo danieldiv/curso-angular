@@ -68,6 +68,10 @@ export class LancamentoCadastroComponent implements OnInit {
     });
   }
 
+  erroUpload(event) {
+    this.toast.error('Erro ao tentar enviar anexo!');
+  }
+
   get nomeAnexo() {
     const nome = this.formulario.get('anexo').value;
 
@@ -79,7 +83,7 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   get urlUploadAnexo() {
-    return this.lancamentoService.urlUploadAnexo();
+    return this.lancamentoService.urlUploadAnexo() + "/naexiste";
   }
 
   configurarFormulario() {
