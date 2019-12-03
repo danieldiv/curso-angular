@@ -37,8 +37,8 @@
             <ng-template pTemplate="body" let-pessoa>
               <tr>
                 <td>{{pessoa.nome}}</td>
-                <td>{{pessoa.endereco.cidade}}</td>
-                <td>{{pessoa.endereco.estado}}</td>
+                <td>{{pessoa.endereco.cidade?.nome}}</td>
+                <td>{{pessoa.endereco.cidade?.estado.nome}}</td>
                 <td class="col-ativo-content">
                   <a [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top"
                     (click)="alternarStatus(pessoa)">
