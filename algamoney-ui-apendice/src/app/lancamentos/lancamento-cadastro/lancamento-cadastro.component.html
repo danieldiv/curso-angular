@@ -82,7 +82,11 @@
       </div>
 
       <div class="ui-g-12 ui-fluid" dir="rtl"
-      *ngIf="formulario.get('anexo').value">
+        *ngIf="formulario.get('anexo').value">
+        <button pButton type="button" class="ui-button-danger"
+          icon="pi pi-times" pTooltip="Remover anexo" tooltipPosition="top"
+          (click)="removerAnexo()"></button>
+
         <a target="_blank" pTooltip="Baixar anexo" toolTipPosition="top"
           [href]="formulario.get('urlAnexo').value">{{ nomeAnexo }}</a>
       </div>
