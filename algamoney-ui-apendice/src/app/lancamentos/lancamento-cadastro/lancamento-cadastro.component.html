@@ -65,10 +65,18 @@
           formControlName="observacao"></textarea>
       </div>
 
-      <div class="ui-g-6 ui-g-offset-6 ui-md-2 ui-md-offset-10 ui-fluid">
+      <div class="ui-g-6 ui-g-offset-6 ui-md-2 ui-md-offset-10 ui-fluid"
+        *ngIf="!formulario.get('anexo').value">
         <p-fileUpload name="anexo" mode="basic" auto="true" maxFileSise="100000000"
           chooseLabel="Anexar" accept="image/*,application/*"
-          [url]="urlUploadAnexo"></p-fileUpload>
+          [url]="urlUploadAnexo"
+          (onUpload)="aoTerminarUploadAnexo($event)"></p-fileUpload>
+      </div>
+
+      <div class="ui-g-12 ui-fluid" dir="rtl"
+      *ngIf="formulario.get('anexo').value">
+        <a target="_blank" pTooltip="Baixar anexo" toolTipPosition="top"
+          [href]="formulario.get('urlAnexo').value">{{ nomeAnexo }}</a>
       </div>
 
       <div class="ui-g-12">
