@@ -38,11 +38,11 @@ export class AuthService {
 
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
 
-    return this.http.post(this.oauthTokenUrl, body,
+    return this.http.post<any>(this.oauthTokenUrl, body,
         { headers, withCredentials: true })
       .toPromise()
       .then(response => {
-        this.armazenarToken(response['access_token']);
+        this.armazenarToken(response.access_token);
       })
       .catch(response => {
         const responseError = response.error;
@@ -62,11 +62,11 @@ export class AuthService {
 
     const body = 'grant_type=refresh_token';
 
-    return this.http.post(this.oauthTokenUrl, body,
+    return this.http.post<any>(this.oauthTokenUrl, body,
         { headers, withCredentials: true })
       .toPromise()
       .then(response => {
-        this.armazenarToken(response['access_token']);
+        this.armazenarToken(response.access_token);
 
         console.log('Novo Access token criado!');
 

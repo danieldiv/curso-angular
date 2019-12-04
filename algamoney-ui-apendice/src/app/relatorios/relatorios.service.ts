@@ -18,12 +18,11 @@ export class RelatoriosService {
 
   relatorioLancamentosPorPessoa(inicio: Date, fim: Date) {
     const params = new HttpParams()
-      .set('inicio', moment(inicio).format('YYYY-MM-DD'))
-      .set('fim', moment(fim).format('YYYY-MM-DD'));
+      .append('inicio', moment(inicio).format('YYYY-MM-DD'))
+      .append('fim', moment(fim).format('YYYY-MM-DD'));
 
     return this.http.get(`${this.lancamentosUrl}/relatorios/por-pessoa`,
       { params, responseType: 'blob' })
-      .toPromise()
-      .then(response => response);
+      .toPromise();
   }
 }
