@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PessoaService, PessoaFiltro } from '../pessoa.service';
+import { Title } from '@angular/platform-browser';
 
 import { LazyLoadEvent, ConfirmationService, MessageService } from 'primeng/components/common/api';
 import { Table } from 'primeng/table';
+
+import { PessoaService, PessoaFiltro } from '../pessoa.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
-import { CategoriaService } from 'src/app/categorias/categoria.service';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pessoas-pesquisa',

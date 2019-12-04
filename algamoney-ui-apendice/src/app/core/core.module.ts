@@ -6,7 +6,6 @@ import localePt from '@angular/common/locales/pt';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
-// import { MessageService } from 'primeng/components/common/messageservice';
 import { GrowlModule } from 'primeng/growl';
 
 import { NavbarComponent } from './navbar/navbar.component';

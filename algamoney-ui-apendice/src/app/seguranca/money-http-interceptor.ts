@@ -1,8 +1,10 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
 import { Observable, from } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
+
 import { AuthService } from './auth.service';
-import { Injectable } from '@angular/core';
 
 export class NotAuthenticadedError {}
 

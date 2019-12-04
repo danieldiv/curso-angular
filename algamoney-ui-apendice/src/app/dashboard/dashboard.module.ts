@@ -7,7 +7,6 @@ import { ChartModule } from 'primeng/chart';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { providers } from 'ng2-toasty';
 
 
 @NgModule({

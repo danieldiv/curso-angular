@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from '../dashboard.service';
 import { DecimalPipe } from '@angular/common';
+
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
