@@ -46,9 +46,9 @@
                   </a>
                 </td>
                 <td class="col-acoes-content">
-                  <button pButton icon="pi pi-pencil" class="item-grudado"
+                  <a pButton icon="pi pi-pencil" class="item-grudado"
                     pTooltip="Editar" tooltipPosition="top"
-                    [routerLink]="['/pessoas', pessoa.codigo]"></button>
+                    [routerLink]="['/pessoas', pessoa.codigo]"></a>
                   <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
                     (click)="confirmarExclusao(pessoa)"></button>
                 </td>
