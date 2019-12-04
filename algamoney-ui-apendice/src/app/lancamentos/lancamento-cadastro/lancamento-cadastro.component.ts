@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import { ToastyService } from 'ng2-toasty';
+import { MessageService } from 'primeng/components/common/api';
 
 import { CategoriaService } from 'src/app/categorias/categoria.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
@@ -33,7 +33,7 @@ export class LancamentoCadastroComponent implements OnInit {
     private categoriaService: CategoriaService,
     private pessoaService: PessoaService,
     private lancamentoService: LancamentoService,
-    private toast: ToastyService,
+    private messageService: MessageService,
     private errorHandler: ErrorHandlerService,
     private route: ActivatedRoute,
     private router: Router,
@@ -76,7 +76,7 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   erroUpload(event) {
-    this.toast.error('Erro ao tentar enviar anexo!');
+    this.messageService.add({ severity: 'error', detail: 'Erro ao tentar enviar anexo!' });
 
     this.uploadEmAndamento = false;
   }
@@ -156,7 +156,7 @@ export class LancamentoCadastroComponent implements OnInit {
   adicionarLancamento() {
     this.lancamentoService.adicionar(this.formulario.value)
       .then(lancamentoAdicionado => {
-        this.toast.success('Lançamento adicionado com sucesso');
+        this.messageService.add({ severity: 'success', detail: 'Lançamento adicionado com sucesso' });
 
         this.router.navigate(['/lancamentos', lancamentoAdicionado.codigo]);
       })
@@ -169,7 +169,7 @@ export class LancamentoCadastroComponent implements OnInit {
           // this.lancamento = lancamento;
           this.formulario.patchValue(lancamento);
 
-          this.toast.success('Lançamento alterado com sucesso');
+          this.messageService.add({ severity: 'success', detail: 'Lançamento alterado com sucesso' });
           this.atualizarTituloEdicao();
       })
       .catch(erro => this.errorHandler.handle(erro));

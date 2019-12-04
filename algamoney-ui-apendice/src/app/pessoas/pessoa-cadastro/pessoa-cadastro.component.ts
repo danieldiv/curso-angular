@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PessoaService } from '../pessoa.service';
 import { Pessoa } from 'src/app/core/model';
-import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -21,7 +21,7 @@ export class PessoaCadastroComponent implements OnInit {
 
   constructor(
     private pessoaService: PessoaService,
-    private toast: ToastyService,
+    private messageService: MessageService,
     private errorHandler: ErrorHandlerService,
     private title: Title,
     private route: ActivatedRoute,
@@ -99,7 +99,7 @@ export class PessoaCadastroComponent implements OnInit {
   adicionarPessoa(form: NgForm) {
     this.pessoaService.adicionar(this.pessoa)
       .then(pessoaAdicionada => {
-        this.toast.success('Pessoa salva com sucesso');
+        this.messageService.add({ severity: 'success', detail: 'Pessoa salva com sucesso' });
 
         this.router.navigate(['/pessoas', pessoaAdicionada.codigo]);
       })
@@ -112,7 +112,7 @@ export class PessoaCadastroComponent implements OnInit {
       .then(pessoa => {
         this.pessoa = pessoa;
 
-        this.toast.success('Pessoa alterada com sucesso');
+        this.messageService.add({ severity: 'success', detail: 'Pessoa alterada com sucesso' });
         this.atualizarTituloEdicao();
       })
       .catch(erro => this.errorHandler.handle(erro));

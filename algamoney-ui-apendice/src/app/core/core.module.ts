@@ -5,8 +5,9 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/components/common/api';
-import { ToastyModule } from 'ng2-toasty';
+import { ConfirmationService, MessageService } from 'primeng/api';
+// import { MessageService } from 'primeng/components/common/messageservice';
+import { GrowlModule } from 'primeng/growl';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorHandlerService } from './error-handler.service';
@@ -27,12 +28,12 @@ registerLocaleData(localePt);
     CommonModule,
     RouterModule,
 
-    ToastyModule,
+    GrowlModule,
     ConfirmDialogModule,
   ],
   exports: [
     NavbarComponent,
-    ToastyModule,
+    GrowlModule,
     ConfirmDialogModule
   ],
   providers: [
@@ -45,6 +46,7 @@ registerLocaleData(localePt);
     AuthService,
 
     ConfirmationService,
+    MessageService,
     Title,
     { provide: LOCALE_ID, useValue: 'pt-BR'}
   ]
